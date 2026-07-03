@@ -23,24 +23,12 @@ void setup() {
   myDisplay.setIntensity(0);
   // Clear the display:
   myDisplay.displayClear();
+  myDisplay.displayText("Scrolling text", PA_CENTER, 100, 0, PA_SCROLL_LEFT, PA_SCROLL_LEFT);
 }
 
 void loop() {
-  myDisplay.setTextAlignment(PA_CENTER);
-  myDisplay.print("Center");
-  delay(2000);
-  myDisplay.setTextAlignment(PA_LEFT);
-  myDisplay.print("Left");
-  delay(2000);
-  myDisplay.setTextAlignment(PA_RIGHT);
-  myDisplay.print("Right");
-  delay(2000);
-  myDisplay.setTextAlignment(PA_CENTER);
-  myDisplay.setInvert(true);
-  myDisplay.print("Invert");
-  delay(2000);
-  myDisplay.setInvert(false);
-  myDisplay.print(1234);
-  delay(2000);
+  if (myDisplay.displayAnimate()) {
+    myDisplay.displayReset();
+  }
 }
 
