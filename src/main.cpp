@@ -18,6 +18,24 @@ MD_Parola myDisplay = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 #define CLK_PIN 13
 // MD_Parola myDisplay = MD_Parola(HARDWARE_TYPE, DATA_PIN, CLK_PIN, CS_PIN, MAX_DEVICES);
 
+struct Vec2 {
+	double x;
+	double y;
+};
+
+Vec2 day_to_coord(int day) {
+	int y = day / 7;
+	int x = day - (7 * y);
+
+	return Vec2{x-1, y};
+}
+
+void print_date(int day) {
+	Vec2 pos = day_to_coord(day);
+
+	myDisplay.getGraphicObject()->setPoint(pos.x, pos.y, true);
+}
+
 void setup() {
   // Intialize the object:
   myDisplay.begin();
@@ -29,7 +47,7 @@ void setup() {
 	// myDisplay.setZoneEffect(0, true, PA_FLIP_UD);
 	// myDisplay.setZoneEffect(0, true, PA_FLIP_LR);
   // myDisplay.displayText("Scrolling text", PA_CENTER, 100, 0, PA_SCROLL_LEFT, PA_SCROLL_LEFT);
-	myDisplay.getGraphicObject()->setPoint(3, 5, true);
+	print_date(10);
 }
 
 void loop() {
