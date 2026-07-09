@@ -94,6 +94,12 @@ void print_hours(int hours) {
 	}; */
 }
 
+void print_seconds(int seconds) {
+	for(int i = 0; i < seconds/12; i++) {
+		myDisplay.getGraphicObject()->setPoint(7, i, true);
+	};
+}
+
 
 void setup() {
 	Serial.begin(9600); 
@@ -122,9 +128,11 @@ void loop() {
 
 	print_date(RTC.year, RTC.month, RTC.dayofmonth);
 	print_hours(RTC.hours);
+	print_seconds(RTC.seconds);
 
-	Serial.print(RTC.hours);
-	Serial.println(); 
+	// myDisplay.getGraphicObject()->setPoint(7, 0, RTC.seconds%2);
 
-	delay(60*1*1000); 
+	// Serial.println(RTC.seconds);
+
+	delay(1*1000); 
 }
