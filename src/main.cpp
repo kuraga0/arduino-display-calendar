@@ -98,6 +98,10 @@ void print_seconds(int seconds) {
 	for(int i = 0; i < seconds/12; i++) {
 		myDisplay.getGraphicObject()->setPoint(7, i, true);
 	};
+
+	if (seconds>12) {
+		myDisplay.getGraphicObject()->setPoint(7, 0, seconds%2);
+	}
 }
 
 
@@ -128,8 +132,6 @@ void loop() {
 	print_date(RTC.year, RTC.month, RTC.dayofmonth);
 	print_hours(RTC.hours);
 	print_seconds(RTC.seconds);
-
-	// myDisplay.getGraphicObject()->setPoint(7, 0, RTC.seconds%2);
 
 	if (Serial) {
 		Serial.print(RTC.hours);
