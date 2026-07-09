@@ -24,7 +24,7 @@ MD_Parola myDisplay = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 
 #define DS1302_CLK_PIN A5
 #define DS1302_DAT_PIN A4
-#define DS1302_RST_PIN 13
+#define DS1302_RST_PIN A3
 
 #define CURRENT_SECONDS 00
 #define CURRENT_MINUTES 30
@@ -57,7 +57,7 @@ void print_date(int day) {
 }
 
 void setup() {
-	 Serial.begin(9600); 
+	Serial.begin(9600); 
 
   RTC.setDS1302Time(CURRENT_SECONDS, CURRENT_MINUTES, CURRENT_HOURS,
                     CURRENT_DAY_OF_WEEK, CURRENT_DAY_OF_MONTH, CURRENT_MONTH,
@@ -84,7 +84,8 @@ void loop() {
 	print_date(RTC.seconds);
 
 	Serial.print("Current time: ");
-	Serial.print(RTC.year);
+	Serial.print(RTC.seconds);
+	Serial.println(); 
 
-	 delay(1000); 
+	delay(1000); 
 }
