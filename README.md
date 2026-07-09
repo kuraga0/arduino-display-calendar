@@ -1,5 +1,11 @@
 # arduino-display-calendar
 
+# BUILD
+```
+chmox +x ./upload.sh
+./upload.sh
+```
+
 # PINOUT
 
 ## MAX7219 (display)
