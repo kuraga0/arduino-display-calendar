@@ -1,5 +1,7 @@
 # arduino-display-calendar
 
+![image](docs/display.png)
+
 # BUILD
 ```
 chmox +x ./upload.sh
