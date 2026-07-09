@@ -84,14 +84,6 @@ void displayHours(int hours) {
 		myDisplay.getGraphicObject()->setPoint(pos.x, pos.y+5, true);
 		pos.x++;
 	};
-
-
-	/* for(int y = 0; y < hours; y++) {
-		for(int x = 0; x < 8; x++) {
-			pos
-			myDisplay.getGraphicObject()->setPoint(pos.x, pos.y+5, true);
-		}
-	}; */
 }
 
 void displaySeconds(int seconds) {
