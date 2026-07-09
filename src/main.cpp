@@ -67,13 +67,13 @@ Vec2 dayToCoord(int year, int month, int day) {
   return Vec2{x - 1, y};
 }
 
-void printDate(int year, int month, int day) {
+void displayDate(int year, int month, int day) {
   Vec2 pos = dayToCoord(year, month, day);
 
   myDisplay.getGraphicObject()->setPoint(pos.x, pos.y, true);
 }
 
-void printHours(int hours) {
+void displayHours(int hours) {
 	Vec2 pos = Vec2{0,0};
 	for(int i = 0; i < hours; i++) {
 		if (pos.x > 7) {
@@ -94,7 +94,7 @@ void printHours(int hours) {
 	}; */
 }
 
-void printSeconds(int seconds) {
+void displaySeconds(int seconds) {
 	for(int i = 0; i < seconds/12; i++) {
 		myDisplay.getGraphicObject()->setPoint(7, i, true);
 	};
@@ -129,9 +129,9 @@ void loop() {
 	RTC.updateTime();
   myDisplay.displayClear();
 
-	printDate(RTC.year, RTC.month, RTC.dayofmonth);
-	printHours(RTC.hours);
-	printSeconds(RTC.seconds);
+	displayDate(RTC.year, RTC.month, RTC.dayofmonth);
+	displayHours(RTC.hours);
+	displaySeconds(RTC.seconds);
 
 	if (Serial) {
 		Serial.print(RTC.hours);
@@ -142,5 +142,5 @@ void loop() {
 		Serial.println();
 	}
 
-	delay(1*1000); 
+	delay(1*1000);
 }
