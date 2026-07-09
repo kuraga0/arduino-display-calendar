@@ -27,8 +27,8 @@ MD_Parola myDisplay = MD_Parola(HARDWARE_TYPE, CS_PIN, MAX_DEVICES);
 #define DS1302_RST_PIN A3
 
 #define CURRENT_SECONDS 00
-#define CURRENT_MINUTES 30
-#define CURRENT_HOURS 10
+#define CURRENT_MINUTES 10
+#define CURRENT_HOURS 4
 #define CURRENT_DAY_OF_WEEK 5
 #define CURRENT_DAY_OF_MONTH 9
 #define CURRENT_MONTH 07
@@ -73,6 +73,28 @@ void print_date(int year, int month, int day) {
   myDisplay.getGraphicObject()->setPoint(pos.x, pos.y, true);
 }
 
+void print_hours(int hours) {
+	Vec2 pos = Vec2{0,0};
+	for(int i = 0; i < hours; i++) {
+		if (pos.x > 7) {
+			pos.x = 0;
+			pos.y++;
+		};
+
+		myDisplay.getGraphicObject()->setPoint(pos.x, pos.y+5, true);
+		pos.x++;
+	};
+
+
+	/* for(int y = 0; y < hours; y++) {
+		for(int x = 0; x < 8; x++) {
+			pos
+			myDisplay.getGraphicObject()->setPoint(pos.x, pos.y+5, true);
+		}
+	}; */
+}
+
+
 void setup() {
 	Serial.begin(9600); 
 
@@ -99,9 +121,9 @@ void loop() {
 	// print_date(RTC.dayofmonth);
 
 	print_date(RTC.year, RTC.month, RTC.dayofmonth);
+	print_hours(RTC.hours);
 
-	Serial.print("Current time: ");
-	Serial.print(RTC.seconds);
+	Serial.print(RTC.hours);
 	Serial.println(); 
 
 	delay(60*1*1000); 
