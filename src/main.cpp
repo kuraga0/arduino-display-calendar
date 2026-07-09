@@ -60,20 +60,20 @@ struct Vec2 {
   double y;
 };
 
-Vec2 day_to_coord(int year, int month, int day) {
+Vec2 dayToCoord(int year, int month, int day) {
   int y = day / 7;
   int x = (getLeadingOffset(year, month)) + ( day - (7 * y) );
 
   return Vec2{x - 1, y};
 }
 
-void print_date(int year, int month, int day) {
-  Vec2 pos = day_to_coord(year, month, day);
+void printDate(int year, int month, int day) {
+  Vec2 pos = dayToCoord(year, month, day);
 
   myDisplay.getGraphicObject()->setPoint(pos.x, pos.y, true);
 }
 
-void print_hours(int hours) {
+void printHours(int hours) {
 	Vec2 pos = Vec2{0,0};
 	for(int i = 0; i < hours; i++) {
 		if (pos.x > 7) {
@@ -94,7 +94,7 @@ void print_hours(int hours) {
 	}; */
 }
 
-void print_seconds(int seconds) {
+void printSeconds(int seconds) {
 	for(int i = 0; i < seconds/12; i++) {
 		myDisplay.getGraphicObject()->setPoint(7, i, true);
 	};
@@ -115,7 +115,7 @@ void setup() {
   // Intialize the object:
   myDisplay.begin();
   myDisplay.setFont(_fontVertical);
-  // Set the intensity (brightness) of the display (0-15):
+  // Set the inDnsity (brightness) of the display (0-15):
   myDisplay.setIntensity(0);
   // Clear the display:
   myDisplay.displayClear();
@@ -129,9 +129,9 @@ void loop() {
 	RTC.updateTime();
   myDisplay.displayClear();
 
-	print_date(RTC.year, RTC.month, RTC.dayofmonth);
-	print_hours(RTC.hours);
-	print_seconds(RTC.seconds);
+	printDate(RTC.year, RTC.month, RTC.dayofmonth);
+	printHours(RTC.hours);
+	printSeconds(RTC.seconds);
 
 	if (Serial) {
 		Serial.print(RTC.hours);
