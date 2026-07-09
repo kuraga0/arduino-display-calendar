@@ -119,12 +119,11 @@ void setup() {
   // myDisplay.setZoneEffect(0, true, PA_FLIP_LR);
   // myDisplay.displayText("Scrolling text", PA_CENTER, 100, 0, PA_SCROLL_LEFT,
   // PA_SCROLL_LEFT);
-  // print_date(10);
 }
 
 void loop() {
 	RTC.updateTime();
-	// print_date(RTC.dayofmonth);
+  myDisplay.displayClear();
 
 	print_date(RTC.year, RTC.month, RTC.dayofmonth);
 	print_hours(RTC.hours);
@@ -132,7 +131,14 @@ void loop() {
 
 	// myDisplay.getGraphicObject()->setPoint(7, 0, RTC.seconds%2);
 
-	// Serial.println(RTC.seconds);
+	if (Serial) {
+		Serial.print(RTC.hours);
+		Serial.print(":");
+		Serial.print(RTC.minutes);
+		Serial.print(":");
+		Serial.print(RTC.seconds);
+		Serial.println();
+	}
 
 	delay(1*1000); 
 }
