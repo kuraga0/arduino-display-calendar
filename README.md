@@ -22,7 +22,7 @@ chmox +x ./upload.sh
 ## DS1302 (clock)
 |Module Pin|Arduino Pin|
 |----|---|
-|VCC |5V|
+|VCC |3V3|
 |GND |  |
 |CLK |A5|
 |DAT |A4|
