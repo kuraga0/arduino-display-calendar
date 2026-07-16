@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+# ============================================ #
+# defines current time from os, uplooads it,   #
+# then removes line that sets clock time so it #
+# won't reset when boards is not powered       #
+# ============================================ #
+
 set -euo pipefail
 
 FILE="${1:-src/main.cpp}"
