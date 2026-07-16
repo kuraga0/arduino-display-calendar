@@ -26,3 +26,8 @@ sed -i \
 	"$FILE"
 
 pio run -t upload
+
+# Remove set time function
+perl -0777 -pi -e 's/(^\h*RTC\.setDS1302Time\([^;]*;\n)/\/*\n\1*\/\n/m' "$FILE"
+
+pio run -t upload

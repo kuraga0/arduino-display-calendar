@@ -101,9 +101,9 @@ void setup() {
 	Serial.begin(9600); 
 
 	// UNCOMMENT THIS WHEN BUILDING FOR THE FIRST TIME
-  /* RTC.setDS1302Time(CURRENT_SECONDS, CURRENT_MINUTES, CURRENT_HOURS,
+  RTC.setDS1302Time(CURRENT_SECONDS, CURRENT_MINUTES, CURRENT_HOURS,
                     CURRENT_DAY_OF_WEEK, CURRENT_DAY_OF_MONTH, CURRENT_MONTH,
-                    CURRENT_YEAR); */
+                    CURRENT_YEAR);
 
   // Intialize the object:
   myDisplay.begin();
